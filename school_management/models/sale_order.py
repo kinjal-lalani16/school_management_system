@@ -7,11 +7,11 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     customer_age = fields.Integer(string="Customer age")
+    ref = fields.Char(string="Refrence")
 
 
     def get_attachments(self):
         for sale in self:
-            print(f"\n\n-------id----{sale.id}------\n\n")
             if sale.partner_id:
                 attachments = self.env['ir.attachment'].search([
                     ('res_model', '=', 'sale.order'), ('res_id', '=', sale.id)
@@ -22,8 +22,6 @@ class SaleOrder(models.Model):
 
             att = self.env['ir.attachment'].search([('res_model', '=', 'account.move'),('res_id', '=', 22)])
             print(f"\n\n\n\n\n ---------att----{att}--\n\n\n\n\n")
-            # for n in att:
-            #     print(f'\n\n-----invoice nu attachments-- {n}---\n\n')
             return attachments
 
 
