@@ -10,6 +10,7 @@ class ProductProduct(models.Model):
     tex = fields.Float(string="tex")
     actual_price = fields.Float(string="Actual Price")
     product_detail = fields.Char(string="Product Details")
+    product_ref = fields.Char('product ref')
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=100):
