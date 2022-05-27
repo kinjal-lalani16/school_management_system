@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="view_order_form" model="ir.ui.view">
+		<field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+        	<field name="partner_id" position="after">
+        		<field name="customer_age" />
+        	</field>
+            <xpath expr="//header" position="inside">
+                 <button name="get_attachments" string="Attachments"
+                              type="object" class="btn-primary"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_student_document">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <center>
+                        <h2>Student Details</h2>
+                        Name:<t t-esc="doc.student_id.name"/><br></br>
+                        Date of Birth:<t t-esc="doc.student_dob"/><br></br>
+                        Age:<t t-esc="doc.student_age"/><br></br>
+                        Email:<t t-esc="doc.student_email"/>
+                    </center>
+                </t>
+            </t>
+        </template>
+
+
+        <template id="report_student">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="school_management.report_student_document"/>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Tree view -->
+        <record id="subject_record_tree_view" model="ir.ui.view">
+            <field name="name">Subject</field>
+            <field name="model">subject.record</field>
+            <!-- <field name="priority" eval="8" />-->
+            <field name="arch" type="xml">
+                <tree string="Subject">
+                    <field name="subject_name" />
+                    <field name="subject_details" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Kanban view -->
+        <record id="partner_record_kanban_view" model="ir.ui.view">
+            <field name="name">partner.record.kanban.view</field>
+            <field name="model">partner.record</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile" archivable="false">
+                    <field name='id'/>
+                    <field name="name"/>
+                    <field name="subject_details"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            <strong class="o_kanban_record_title">
+                                                <span>
+                                                    <field name="subject_name"/>
+                                                </span>
+                                            </strong>
+                                        </li>
+                                        <li>Details:
+                                            <field name="subject_details"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <!-- Form view -->
+        <record id="partner_record_form_view" model="ir.ui.view">
+            <field name="name">partner.record.form.view</field>
+            <field name="model">partner.record</field>
+          <field name="arch" type="xml">
+                <form string="Partner">
+                    <sheet>
+                        <div>
+                            <group>
+                            <div class="row">
+                                <group>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="subject"/>
+                                    </group>
+                                    <group>
+                                        <field name="description" />
+                                    </group>
+                                </group>
+                            </div>
+                            </group>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record model="ir.actions.act_window" id="action_view_partners">
+            <field name="name">Partner record action</field>
+            <field name="res_model">partner.record</field>
+           <!--  <field name="view_type">form</field> -->
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new subject
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu -->
+        <menuitem id="school_partner" name="Partner" parent="school_management.menu_school"
+         action="action_view_partners"/>
+    </data>
+</odoo>
+
+
+

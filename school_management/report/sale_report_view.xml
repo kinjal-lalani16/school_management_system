@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_sale_order">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="date" t-as='i'>
+                                        <tr>
+                                            <td>
+                                                <span t-esc="i['start_date']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="i['end_date']"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left">
+                                            <strong>Order No</strong>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <strong>Order Date</strong>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <strong>Expected Date</strong>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <strong>Customer</strong>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <strong>Salesperson</strong>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <strong>Company</strong>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <strong>Total</strong>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <strong>Invoice Status</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="sale_tbody">
+                                    <t t-foreach="kinjal" t-as="o">
+
+                                        <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                            <td class="text-left">
+                                                <span t-esc="o['name']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="o['date_order']" widget="date"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="o['expected_date']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="o['partner_id']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="o['user_id']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="o['company_id']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="o['amount_total']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="o['invoice_status']"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+        <template id="sale_report">
+            <t t-call="web.html_container">
+                <t t-call="school_management.report_sale_order"/>
+            </t>
+        </template>
+    </data>
+</odoo>

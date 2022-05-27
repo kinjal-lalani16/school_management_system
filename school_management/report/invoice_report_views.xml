@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="invoice_detail_document">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-set="set_untexed" t-value="0"/>
+                    <t t-set="set_texted" t-value="0"/>
+                    <t t-set="set_total" t-value="0"/>
+                    <div class="page">\
+                        <t t-if="not (env.context.get('invoice', False))">
+                        </t>
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left">
+                                            <span>Invoice No</span>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <span>Invoice date</span>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <span>Customer</span>
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="docs" t-as='doc'>
+                                        <tr>
+                                            <td>
+                                                <span t-esc="doc.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc.invoice_date"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc.partner_id.name"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left">
+                                            <strong>Description</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="sale_tbody">
+                                    <t t-foreach="docs.invoice_line_ids" t-as="line">
+                                        <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                            <td class="text-left">
+                                                <span t-esc="line.name"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+        <template id="invoice_detail_report">
+            <t t-call="web.html_container">
+                <t t-call="school_management.invoice_detail_document"/>
+            </t>
+        </template>
+    </data>
+</odoo>

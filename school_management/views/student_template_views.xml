@@ -1,0 +1,44 @@
+<odoo>
+    <template id="portal_my_home_student" name="Portal My Home : student entries" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="student_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Students</t>
+                <t t-set="url" t-value="'/my/student'"/>
+                <t t-set="count" t-value="student_count"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_students" name="My Quotations">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Quotations</t>
+            </t>
+            <t t-if="not student">
+                <p>There are currently no students in your account.</p>
+            </t>
+            <t t-if="student" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>student #</th>
+                        <th class="text-left">Name</th>
+                        <th class="text-left">Age</th>
+                        <th class="text-left">Email</th>
+                    </tr>
+                </thead>
+                <t t-foreach="student" t-as="st">
+                    <tr>
+                        <td><t t-esc="st.roll_no"/></td>
+                        <td class="text-left"><span t-field="st.student_id.name"/></td>
+                        <td class="text-left"><span t-field="st.student_age"/></td>
+                        <td class="text-left">
+                            <span t-field="st.student_email"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

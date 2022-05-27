@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<record id="view_date_wizard" model="ir.ui.view">
+		   <field name="name">date.wizard.name</field>
+		   <field name="model">date.wizard</field>
+		   <field name="type">form</field>
+		   <field name="arch" type="xml">
+		       <form>
+		       		<group>
+			            <group>
+			                 <field name="start_date"/>
+			            </group>
+			            <group>
+			                 <field name="end_date"/>
+			            </group>
+			        </group>
+		           <footer>
+		               <button name="action_done" string="Print" type="object" class="oe_highlight"/>
+		               <button string="Cancel" class="btn btn-default" special="cancel"/>
+		           </footer>
+		       </form>
+	   		</field>
+		</record>
+		<record id="action_view_wizard" model="ir.actions.act_window">
+            <field name="name">Date Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">date.wizard</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">form</field>
+            <!-- <field name="view_id" ref="date_wizard"/> -->
+            <field name="target">new</field>
+        </record>
+        <!-- Action -->
+        <menuitem id="menu_school" name="School"/>
+        <menuitem id="date" name="Date" parent="menu_school" action="action_view_wizard"/>
+	</data>
+</odoo>
+

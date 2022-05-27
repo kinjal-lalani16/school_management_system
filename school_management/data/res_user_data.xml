@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="professor_demo" model="res.users">
+            <field name="partner_id" ref="school_management.professor_res"/>
+            <field name="login">kinjal</field>
+            <field name="password">kinjal</field>
+            <field name="signature" type="xml"><span>-- <br/>+Ms Lalani</span></field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        <record id="student_demo" model="res.users">
+            <field name="partner_id" ref="school_management.student_res"/>
+            <field name="login">nidhi</field>
+            <field name="password">nidhi</field>
+            <field name="signature" type="xml"><span>-- <br/>+Ms Lalani</span></field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        <record id="manager_demo" model="res.users">
+            <field name="partner_id" ref="school_management.manager_res"/>
+            <field name="login">shreya123@gmail.com</field>
+            <field name="password">shreya</field>
+            <field name="signature" type="xml"><span>-- <br/>+Ms Lalani</span></field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="professor_res" model="res.partner">
+            <field name="name">Kinjal Lalani</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Ahemdabad</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">380015</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">klalani63@gmail.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+        <record id="student_res" model="res.partner">
+            <field name="name">Nidhi Lalani</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Ahemdabad</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">380015</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">nlalani63@gmail.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+         <record id="manager_res" model="res.partner">
+            <field name="name">Shreya soni</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Ahemdabad</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">380015</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">klalani63@gmail.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+    </data>
+</odoo>

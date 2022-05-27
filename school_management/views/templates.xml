@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="job_details" name="Job Details">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    <center>
+                        <h3>Job application</h3>
+                    </center>
+                    <br/>
+                    <table class="table-striped table">
+                        <thead style="font-size: 23px;">
+                            <tr>
+                                <h6>
+                                    <b>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>
+                                            <b>Designation</b>
+                                        </th>
+                                    </b>
+                                </h6>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-as="job" t-foreach="details">
+                                <tr>
+                                    <td>
+                                        <span t-esc="job.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="job.phone"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="job.email"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="job.designation_id.name"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="job_designation" name="Desigantion">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    <center>
+                        <h3>Designation</h3>
+                    </center>
+                    <br/>
+                    <table class="table-striped table">
+                        <tbody>
+                            <t t-as="des" t-foreach="des_details">
+                                <tr>
+                                    <td>
+                                        <a t-attf-href="/designation/#{slug(des)}">
+                                            <t t-esc="des.name"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <!-- <a class="btn btn-primary float-right d-none d-xl-inline-block"
+                                        t-attf-href="/editable_form/#{slug(des)}">
+                                            <span>Edit</span>
+                                        </a> -->
+                                        <button class="btn btn-primary float-right d-none d-xl-inline-block edit" type="action">
+                                            Edit
+                                        </button>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal fade" id="des_pop_up" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Designation</h3>
+                            <button type="button" class="close" data-dismiss="modal">&amp;times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/edit_job_details/"
+                                class="s_website_form container-fluid mt32" data-editable-form="false" data-model_name="job.designation" enctype="multipart/form-data" method="post" role="form" data-success_page="
+                                /contactus-thank-you">
+                                <input name="csrf_token" t-att-value="request.csrf_token()" type="hidden"/>
+                                <input name="designation_id" t-att-value=
+                                    "id" type="hidden"/>
+                                <div class="form-group row form-field o_website_form_required_custom o_has_error">
+                                    <label class="col-lg-3 col-md-4 col-form-label" for="name">Designation</label>
+                                    <div class="col-lg-7 col-md-8">
+                                        <input class="form-control o_website_form_input" name="name" required="required" t-att-value="name" type="text"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="edit_form">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Application edit Details</t>
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="col-md-8">
+                        <section class="pt8 pb8">
+                            <div class="container mt-2">
+                                <form action="/edit_job_details/"
+                                    class="s_website_form container-fluid mt32" data-editable-form="false" data-model_name="job.designation" enctype="multipart/form-data" method="post" role="form" data-success_page="
+                                    /contactus-thank-you">
+                                    <input name="csrf_token" t-att-value="request.csrf_token()" type="hidden"/>
+                                    <input name="designation_id" t-att-value=
+                                        "id" type="hidden"/>
+                                    <div class="form-group row form-field o_website_form_required_custom o_has_error">
+                                        <label class="col-lg-3 col-md-4 col-form-label" for="name">Designation</label>
+                                        <div class="col-lg-7 col-md-8">
+                                            <input class="form-control o_website_form_input" name="name" required="required" t-att-value="name" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+                                            <button class="btn btn-primary float-right mb32" type="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <!--  <template id="create_form"><t t-call="website.layout"><t t-set="additional_title">Application Details</t><form action="/create_job_application" method="post"><input name="designation_id" t-att-value="job" type="hidden"/><input name="csrf_token" t-att-value="request.csrf_token()" type="hidden"/><div class="col-lg-12"><div class="alert alert-danger" role="alert" t-if="error_message"><t t-as="err" t-foreach="error_message"><t t-esc="err"/><br/></t></div></div><div id="wrap"><div class="or_structure"><div class="container"><div class="col-xl-12"><div t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} col-xl-6"><label class="col-form-label" for="name">Name</label><span>*</span><input name="name" t-att-value="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}" type="text"/></div><div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} col-xl-6"><label class="col-form-label" for="email">Email</label><input name="email" t-att-value="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" type="email"/></div><div t-attf-class="form-group #{error.get('phone') and 'o_has_error' or ''} col-xl-6"><label class="col-form-label" for="email">Mobile No</label><input name="phone" t-att-value="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" type="tel"/></div><div class="col-xl-4"><button class="btn btn-primary float-right mb32 " type="submit">Confirm
+
+
+
+                                    <span class="fa fa-long-arrow-right"/></button></div></div></div></div></div></form></t></template>-->
+    <template id="thank_you">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_1"/>
+                <div class="container pt-3">
+                    <h1>Thanks!</h1>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="alert alert-success" role="status">Your message has been sent successfully.
+
+
+
+                                <button class="close" data-dismiss="alert" type="button">&amp;times;</button></div>
+                            <p>We will get back to you shortly.
+                    </p>
+                        </div>
+                        <div class="col-lg-4">
+                            <t t-call="website.company_description"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_2"/>
+            </div>
+        </t>
+    </template>
+</odoo>

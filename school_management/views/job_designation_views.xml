@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Tree view -->
+        <record id="job_designation_tree_view" model="ir.ui.view">
+            <field name="name">job.designation.tree.view</field>
+            <field name="model">job.designation</field>
+            <field name="arch" type="xml">
+                <tree string="Job Details">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+        <record id="job_designation_form_view" model="ir.ui.view">
+            <field name="name">job.designation.form.view</field>
+            <field name="model">job.designation</field>
+            <field name="arch" type="xml">
+                <form string="Job Details">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page string="Application List">
+                                    <field name="application_ids">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="email"/>
+                                            <field name="phone"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="email"/>
+                                            </group>
+                                            <group>
+                                                <field name="phone"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Menu -->
+        <record id="action_view_job_designation" model="ir.actions.act_window">
+            <field name="name">Designation</field>
+            <field name="res_model">job.designation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new Job designation
+                </p>
+            </field>
+        </record>
+        <!-- Action -->
+        <menuitem id="job_des" name="Designation" parent="school_management.menu_school"
+            action="action_view_job_designation"/>
+    </data>
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="tree_view_job_application" model="ir.ui.view">
+            <field name="name">job.application.tree.view</field>
+            <field name="model">job.application</field>
+            <field name="arch" type="xml">
+                <tree string="Job Details">
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+
+        <record id="form_view_job_application" model="ir.ui.view">
+            <field name="name">job.application.form.view</field>
+            <field name="model">job.application</field>
+            <field name="arch" type="xml">
+                <form string="Job Application Details">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="phone"/>
+                                <field name="designation_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_view_job_applications" model="ir.actions.act_window">
+            <field name="name">Job application</field>
+            <field name="res_model">job.application</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new job application
+                </p>
+            </field>
+        </record>
+        <menuitem id="job_application" name="Application" parent="school_management.menu_school"
+            action="action_view_job_applications"/>
+    </data>
+</odoo>

@@ -1,0 +1,47 @@
+<odoo>
+    <template customize_show="True" id="create_form">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Application Details</t>
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="col-md-8">
+                        <section class="pt8 pb8">
+                            <div class="container mt-2">
+                                <form action="/create_job_application/"
+                                    class="s_website_form container-fluid mt32" data-editable-form="false" data-model_name="job.application" enctype="multipart/form-data" method="post" role="form" data-success_page="
+                                    /contactus-thank-you">
+                                    <input name="designation_id" t-att-value="job" type="hidden"/>
+
+                                    <div class="form-group row form-field o_website_form_required_custom o_has_error">
+                                        <label class="col-lg-3 col-md-4 col-form-label" for="name">Your Name</label>
+                                        <div class="col-lg-7 col-md-8">
+                                            <input class="form-control o_website_form_input" name="name" required="required" t-att-value="name" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row form-field">
+                                        <label class="col-lg-3 col-md-4 col-form-label" for="phone">Phone Number</label>
+                                        <div class="col-lg-7 col-md-8">
+                                            <input class="form-control o_website_form_input" name="phone" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row form-field o_website_form_required_custom o_has_error">
+                                        <label class="col-lg-3 col-md-4 col-form-label" for="email">Email</label>
+                                        <div class="col-lg-7 col-md-8">
+                                            <input class="form-control o_website_form_input" name="email" required="required" t-att-value="email" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+                                            <button class="btn btn-primary float-right mb32 o_website_form_send" type="submit">Submit</button>
+                                            <span id="o_website_form_result"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Tree view -->
+        <record id="test_record_tree_view" model="ir.ui.view">
+            <field name="name">Test</field>
+            <field name="model">test.test</field>
+            <!-- <field name="inherit_id" ref="product.product_template_form_view"/> -->
+            <!-- <field name="priority" eval="8" />-->
+            <field name="arch" type="xml">
+                <tree string="Test">
+                    <field name="test_name" />
+                    <field name="test_date"/>
+                    <field name="profesor_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+        <record id="test_record_form_view" model="ir.ui.view">
+            <field name="name">Test</field>
+            <field name="model">test.test</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id"
+                ref="school_management.profesor_record_form_view_base"/>
+            <field name="arch" type="xml">
+                <field name="profesor_id" position="after">
+                    <field name="test_name"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Menu -->
+        <record model="ir.actions.act_window" id="action_view_test">
+            <field name="name">Tests</field>
+            <field name="res_model">test.test</field>
+           <!--  <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new Test
+                </p>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <menuitem id="school_test" name="Test" parent="school_management.menu_school" action="action_view_test"/>
+    </data>
+</odoo>
+
+
+
